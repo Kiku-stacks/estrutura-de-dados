@@ -1,5 +1,6 @@
-#include "pilha.h"
+#include "fila.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 void iniciarFila(Fila* f){
     f->front=NULL;
@@ -30,22 +31,38 @@ void removerElemento(Fila* f, int *elemento){
 
 }
 
-void frente(Fila* f){
-    return f->back;
+int frente(Fila* f){
+    return f->back->dado;
 }
 
-void tamanho(Fila* f){
+int tamanho(Fila* f){
     return f->tamanho;
+}
+
+void imprimir(Fila* f){
+    Node* aux=f->front;
+    while(aux !=NULL){
+        printf("%d ",aux->dado);
+        aux=aux->next;
+    }
+    printf("\n");
+}
+
+bool vazia(Fila* f){
+    return f->front==NULL;
 }
 
 void inserirElemento(Fila* f, int elem){
     Node* novo = createNode(elem,NULL);
-}
-
-void imprimir(Fila* p){
-    Node* aux=f->front;
-    while(f->front!=NULL){
-        f->front=aux->next;
-        printf("%d ",aux->dado);
+    
+    if(vazia(f)){
+        f->back=novo;
+        f->front=f->back;
+        novo->next=NULL;
+        f->tamanho++;
+    }else{
+        f->back->next=novo; 
+        f->back=novo;
+        f->tamanho++;
     }
 }
