@@ -1,22 +1,23 @@
-#ifndef PILHA_H
-#define PILHA_H
+#ifndef FILA_H
+#define FILA_H
 
 #include <stdio.h>
 #include <stdbool.h>
+#include "node.h"
 
 typedef struct {
     Node* front;
     Node* back;
     int tamanho;
-} Fila;
+}Fila;
 
-void iniciaFila(Fila* f);
-void destroiFila(Fila* f);
+void iniciarFila(Fila* f);
+void destruirFila(Fila* f);
 bool vazia(Fila* f);
 int frente(Fila* f);
-void remove(Fila* f);
+void removerElemento(Fila* f, int *elemento);
 void esvazia(Fila* f);
-void insere(Fila* f, int elem);
+void inserirElemento(Fila* f, int elem);
 int tamanho(Fila* f);
 void imprimir(Fila* f);
 
