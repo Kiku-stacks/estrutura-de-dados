@@ -12,21 +12,23 @@ int main(){
     inserirElemento(&f,30);
     inserirElemento(&f,40);
     inserirElemento(&f,50);
-
+    printf("\n");
+    
     imprimir(&f);
 
     int numero;
     removerElemento(&f,&numero);
-    printf("Removacao do elemento %d concluida\n",numero);
 
     inserirElemento(&f,140);
     inserirElemento(&f,300);
+    printf("\n");
 
     imprimir(&f);
 
-    destruirFila(&f);
+    printf("Primeiro elemento: %d\n",frente(&f));
 
-    
+    destruirFila(&f);
+    imprimir(&f);
 
     return 0;
 }
