@@ -6,33 +6,41 @@ void iniciarFila(Fila* f){
     f->front=NULL;
     f->back=NULL;
     f->tamanho=0;
+
+    printf("Fila inicializada com sucesso!\n");
 }
 
 void destruirFila(Fila* f){
-    Node* aux = f->front;
+    Node* aux;
     while(f->front !=NULL){
         aux = f->front;
-        free(aux);
         f->front = aux->next;
+        free(aux);
         f->tamanho--;
     }
     f->back=NULL;
+
+    printf("Fila destruida com sucesso\n");
 }
 
-void removerElemento(Fila* f, int *elemento){
+void removerElemento(Fila* f, int *elemento){ //teste de fila vazia
     Node* aux = f->front;
-    f->front=aux->next;
-    f->tamanho--;
-    *elemento=aux->dado;
-    free(aux);
-    
-    if(f->front==NULL)
+    if(f->front==NULL){
         f->back==NULL;
+    }else{
+        f->front=aux->next;
+        f->tamanho--;
+        *elemento=aux->dado;
+        free(aux);
+    }
+    
+
+    printf("Elemento %d removido com sucesso\n\n",*elemento);
 
 }
 
 int frente(Fila* f){
-    return f->back->dado;
+    return f->front->dado;
 }
 
 int tamanho(Fila* f){
@@ -41,11 +49,12 @@ int tamanho(Fila* f){
 
 void imprimir(Fila* f){
     Node* aux=f->front;
+    printf("------MINHA FILA------\n\n");
     while(aux !=NULL){
-        printf("%d ",aux->dado);
+        printf("%d-> ",aux->dado);
         aux=aux->next;
     }
-    printf("\n");
+    printf("\n\n");
 }
 
 bool vazia(Fila* f){
@@ -60,9 +69,11 @@ void inserirElemento(Fila* f, int elem){
         f->front=f->back;
         novo->next=NULL;
         f->tamanho++;
+        printf("Elemento %d inserido com sucesso\n",elem);
     }else{
         f->back->next=novo; 
         f->back=novo;
         f->tamanho++;
+        printf("Elemento %d inserido com sucesso\n",elem);
     }
 }
