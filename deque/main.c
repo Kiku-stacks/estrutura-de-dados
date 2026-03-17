@@ -1,6 +1,6 @@
 #include <stdio.h>
-#include "node.h"
-#include "deque.h"
+//#include "node.h"
+#include "deque.c"
 
 int main(){
 
