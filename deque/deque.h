@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include "node.h"
+#include "node.c"
 
 typedef struct {
     Node* front;
