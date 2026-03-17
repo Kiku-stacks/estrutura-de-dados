@@ -29,6 +29,11 @@
             printf("Deque vazia, não é possível remover elemento\n");
         }else{
             d->front=aux->next;
+            if(d->front!=NULL){
+                d->front->prev=NULL;
+            }
+            else
+                d->back=NULL;
             d->tamanho--;
             *elemento=aux->dado;
             free(aux);
@@ -40,7 +45,10 @@
     }
 
     int front(Deque* d){
-        return d->front->dado;
+        if(!isEmpty(d)){
+            return d->front->dado;
+        }
+        return -1; // Valor inválido
     }
 
     int size(Deque* d){
@@ -48,7 +56,10 @@
     }
 
     int back(Deque* d){
-        return d->back->dado;
+        if(!isEmpty(d)){
+            return d->back->dado;
+        }
+        return -1; // Valor inválido
     }
 
     void printFrontBack(Deque* d){
@@ -72,6 +83,7 @@
             d->back=novo;
             d->front=d->back;
             novo->next=NULL;
+            novo->prev=NULL;
             d->tamanho++;
             printf("Elemento %d inserido com sucesso\n",elem);
         }else{
@@ -120,6 +132,7 @@
             d->front=novo;
             d->back=d->front;
             novo->prev=NULL;
+            novo->next=NULL;
             d->tamanho++;
             printf("Elemento %d inserido com sucesso\n",elem);
         }else{
