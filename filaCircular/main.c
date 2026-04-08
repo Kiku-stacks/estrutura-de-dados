@@ -5,7 +5,6 @@
 int main() {
     FilaCircular fila;
     int capacidade = 5;
-    int elem;
 
     // Inicializa a fila
     initFila(&fila, capacidade);
@@ -40,6 +39,5 @@ int main() {
     // Destruir fila
     destroyFila(&fila);
     printf("\nFila destruida com sucesso!\n");
-
     return 0;
 }
