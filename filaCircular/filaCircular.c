@@ -14,7 +14,7 @@ void initFila(FilaCircular *f, int n){
     f->maximo = n;
     f->tamanho = 0;
     f->primeiro = 0;
-    f->ultimo = -1;
+    f->ultimo = 0;
 
     printf("Fila Circular inicializada com sucesso !\n");
 }
@@ -42,24 +42,28 @@ int fim(FilaCircular *f){
         return f->ptrFila[f->ultimo];
     }
 }
+// daqui pra cima gg 
 
 void inserir(FilaCircular *f, int item){
-    int proximaPosi = (f->ultimo + 1) % (f->maximo);
+    int proximaPosi;
+    if(vazia(f)){
+        proximaPosi = 0;
+    }else{
+        proximaPosi = (f->ultimo + 1) % (f->maximo);
+    }
 
+    f->ptrFila[proximaPosi] = item;
+    f->ultimo = proximaPosi;
+    
+    printf("Elemento %d inserido com sucesso!\n",item);
+    
     if(cheia(f)){
         printf("A fila está cheia, substituindo o elemento %d pelo %d\n",f->ptrFila[f->primeiro],item);
         f->primeiro = (f->primeiro + 1) % (f->maximo);
     }else{
         f->tamanho++;
     }
-    
-    f->ptrFila[proximaPosi] = item;
-    printf("Elemento %d inserido com sucesso!\n",item);
-    f->ultimo = proximaPosi;
 } 
-
-#include <stdio.h>
-#include <stdbool.h>
 
 bool remover(FilaCircular *f, int *elem){
     if(elem == NULL){
@@ -86,7 +90,7 @@ void apagarFila(FilaCircular *f){
     }
     f->tamanho = 0;
     f->primeiro = 0;
-    f->ultimo = -1;
+    f->ultimo = 0;
 }
 
 void destroyFila(FilaCircular *f){
@@ -97,7 +101,7 @@ void destroyFila(FilaCircular *f){
     f->maximo = 0;
     f->tamanho = 0;
     f->primeiro = 0;
-    f->ultimo = -1;
+    f->ultimo = 0;
 }
 
 int PosicaoElemento(FilaCircular *f, int item){
