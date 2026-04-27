@@ -11,7 +11,6 @@ typedef struct {
     int tamanhoLista;
 }ListaEncadeada;
 
-// Protótipos das funções
 void init_lista(ListaEncadeada* lista);
 void esvazia_lista(ListaEncadeada* lista);
 bool lista_vazia(ListaEncadeada* lista);
