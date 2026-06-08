@@ -21,7 +21,7 @@ static void lerLinha(const char *prompt, char *dest, int max)
 static void tocarAtual(Playlist *pl, Deque *cache)
 {
     if (!pl->atual) {
-        puts("  Playlist vazia.");
+        printf("  Playlist vazia.");
         return;
     }
 
@@ -53,7 +53,7 @@ static void imprimirMenu(void)
         "  +------------------------------------------+\n"
         "  Opcao: "
     );
-    fflush(stdout);
+    
 }
 
 int main(void)
@@ -83,7 +83,7 @@ int main(void)
         if (scanf("%d", &opcao) != 1) {
             limparBuffer();
             opcao = -1;
-            puts("  Entrada invalida. Digite um numero.");
+            printf("  Entrada invalida. Digite um numero.");
             continue;
         }
         limparBuffer();
@@ -94,7 +94,6 @@ int main(void)
                 lerLinha("Titulo  : ", titulo,  STR_MAX);
                 lerLinha("Artista : ", artista, STR_MAX);
                 printf("  Duracao (segundos): ");
-                fflush(stdout);
                 if (scanf("%d", &duracao) != 1) duracao = 0;
                 limparBuffer();
                 playlistAdicionar(&pl, titulo, artista, duracao);
@@ -153,11 +152,11 @@ int main(void)
                 break;
 
             case 0:
-                puts("  Encerrando. Ate logo!");
+                printf("  Encerrando. Ate logo!");
                 break;
 
             default:
-                puts("  Opcao invalida.");
+                printf("  Opcao invalida.");
         }
 
     } while (opcao != 0);
