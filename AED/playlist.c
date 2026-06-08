@@ -87,7 +87,7 @@ void playlistExibir(const Playlist *pl)
     int i;
 
     if (!pl->cabeca) {
-        puts("  Playlist vazia.");
+        printf("  Playlist vazia.");
         return;
     }
 
@@ -169,9 +169,9 @@ void dequePushFundo(Deque *dq, const char *titulo, const char *artista)
     if (!dq->fundo) {
         dq->frente = dq->fundo = novo;
     } else {
-        novo->ant       = dq->fundo;
+        novo->ant = dq->fundo;
         dq->fundo->prox = novo;
-        dq->fundo       = novo;
+        dq->fundo = novo;
     }
     dq->tamanho++;
 
@@ -180,7 +180,7 @@ void dequePushFundo(Deque *dq, const char *titulo, const char *artista)
         printf("  [-] Cache cheio -- descartando da frente: \"%s\"\n", desc->titulo);
 
         if (dq->frente->prox) {
-            dq->frente      = dq->frente->prox;
+            dq->frente = dq->frente->prox;
             dq->frente->ant = NULL;
         } else {
             dq->frente = dq->fundo = NULL;
@@ -231,7 +231,7 @@ void dequeExibir(const Deque *dq)
     int i;
 
     if (!dq->frente) {
-        puts("  Cache vazio.");
+        printf("  Cache vazio.");
         return;
     }
 
